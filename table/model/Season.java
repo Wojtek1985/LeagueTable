@@ -12,10 +12,18 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * All the methods for the record of season results.
+ */
 public class Season {
 	private ArrayList<Match> matches = new ArrayList<Match>();
 	private String name;
 	private Comparator<TeamData> comparator;
+
+	public Season(String name, Comparator<TeamData> comparator) {
+		this.setName(name);
+		setComparator(comparator);
+	}
 
 	public ArrayList<Match> getMatches() {
 		return this.matches;
@@ -25,11 +33,14 @@ public class Season {
 		this.comparator = comparator;
 	}
 
-	public Season(String name, Comparator<TeamData> comparator) {
-		this.setName(name);
-		setComparator(comparator);
+	public String getName() {
+		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public void importMatchDataFromCsv(File file) throws IOException, ParseException {
 		Scanner odczyt = new Scanner(file);
 		while (odczyt.hasNextLine()) {
@@ -51,7 +62,9 @@ public class Season {
 					+ ";" + m.getAwayTeam() + ";" + m.getHomeGoals() + ";" + m.getAwayGoals());
 		}
 	}
-
+	/**
+	 * mini-table between the teams in question (ArrayList of names)
+	 */
 	public Season subseason(ArrayList<String> teams, Comparator<TeamData> comparator) {
 		Season newSeason = new Season("subseason", comparator);
 		for (Match m : this.matches) {
@@ -62,6 +75,9 @@ public class Season {
 		return newSeason;
 	}
 	
+	/**
+	 * only the matches until a particular date are counted.
+	 */
 	public Season subseason(GregorianCalendar dateUntil, Comparator<TeamData> comparator) {
 		Season newSeason = new Season("subseason", comparator);
 		for (Match m : this.matches) {
@@ -74,7 +90,10 @@ public class Season {
 	public void addMatch(Match match) {
 		matches.add(match);
 	}
-
+	
+	/**
+	 * returns the table.
+	 */
 	public Table table() {
 		HashMap<String, TeamData> teamDataMap = new HashMap<String, TeamData>();
 		for (Match m : matches) {
@@ -186,13 +205,4 @@ public class Season {
 		t.sortEntriesByComparator(comparator);
 		return t;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

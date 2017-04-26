@@ -2,6 +2,9 @@ package league.table.model;
 
 import java.util.GregorianCalendar;
 
+/**
+ * individual match result.
+ */
 public class Match {
 	private GregorianCalendar date;
 	private String homeTeam;

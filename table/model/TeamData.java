@@ -1,5 +1,8 @@
 package league.table.model;
 
+/**
+ * points, goals etc. of an individual team.
+ */
 public class TeamData {
 	private String teamName;
 	private int played;
@@ -69,7 +72,9 @@ public class TeamData {
 	public synchronized void setGoalsAgainst(int goalsAgainst) {
 		this.goalsAgainst = goalsAgainst;
 	}
-
+	/*
+	 * returns difference between goals scored and conceded.
+	 */
 	public synchronized int getGoalsDifference() {
 		return goalsDifference;
 	}

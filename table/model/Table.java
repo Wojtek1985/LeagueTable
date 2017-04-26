@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * league table - calculated points and other team data.
+ */
 public class Table {
 	private ArrayList<TeamData> entries = new ArrayList<TeamData>();
 	

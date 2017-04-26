@@ -2,6 +2,9 @@ package league.table.model;
 
 import java.util.Comparator;
 
+/**
+ * teams are ranked according to points, then head-to-head record.
+ */
 public class HeadToHeadComparator implements Comparator<TeamData> {
 	
 	public int compare(TeamData first, TeamData second) {

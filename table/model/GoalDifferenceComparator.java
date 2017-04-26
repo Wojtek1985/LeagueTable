@@ -2,6 +2,9 @@ package league.table.model;
 
 import java.util.Comparator;
 
+/**
+ * teams are ranked according to points, then superior goal difference.
+ */
 public class GoalDifferenceComparator implements Comparator<TeamData> {
 
 	public int compare(TeamData first, TeamData second) {
